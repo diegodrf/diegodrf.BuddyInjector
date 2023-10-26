@@ -6,7 +6,7 @@ public class InstanceManager<T>
     private readonly Func<T> _instanceBuilder;
     private readonly bool _isSingleton;
     
-    public InstanceManager(Func<T> instanceBuilder, bool isSingleton = true)
+    public InstanceManager(Func<T> instanceBuilder, bool isSingleton = false)
     {
         _isSingleton = isSingleton;
         _instanceBuilder = instanceBuilder;
