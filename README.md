@@ -6,5 +6,7 @@ large scale, or as your main dependency container.
 
 Buddy Injector was created to help your manual job when unit testing your class that depends on many injections.
 
+[Download](https://www.nuget.org/packages/diegodrf.BuddyInjector/)
+
 ### Examples
-See [a simple project example](diegodrf.BuddyInjector.ExampleProject).
+See [a simple project example](https://github.com/diegodrf/diegodrf.BuddyInjector/tree/main/diegodrf.BuddyInjector.ExampleProject).
