@@ -8,6 +8,8 @@
         <Title>BuddyInjector</Title>
         <Description>A very basic injector for help unit test instatiations.</Description>
         <LangVersion>latest</LangVersion>
+        <PackageProjectUrl>https://github.com/diegodrf/diegodrf.BuddyInjector</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/diegodrf/diegodrf.BuddyInjector</RepositoryUrl>
     </PropertyGroup>
 
 </Project>
