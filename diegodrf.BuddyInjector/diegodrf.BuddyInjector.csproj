@@ -12,4 +12,17 @@
         <RepositoryUrl>https://github.com/diegodrf/diegodrf.BuddyInjector</RepositoryUrl>
     </PropertyGroup>
 
+    <ItemGroup>
+      <None Remove="LICENSE\README.md" />
+      <None Remove="LICENSE\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="LICENSE\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="LICENSE\**" />
+    </ItemGroup>
+
 </Project>
