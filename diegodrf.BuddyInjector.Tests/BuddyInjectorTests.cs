@@ -5,72 +5,91 @@ public class BuddyInjectorTests
     [Fact]
     public void Should_Create_A_Singleton()
     {
-        var container = new BuddyInjector();
-        container.RegisterSingleton(() => new Foo());
-
-        var a = container.GetInstance<Foo>();
-        var b = container.GetInstance<Foo>();
+        // Arrange
+        var sut = new BuddyInjector();
         
+        // Act
+        sut.RegisterSingleton(() => new Foo());
+        var a = sut.GetInstance<Foo>();
+        var b = sut.GetInstance<Foo>();
+        
+        // Assert
         Assert.Equal(a, b);
     }
     
     [Fact]
     public void Should_Create_A_Transient()
     {
-
-        var container = new BuddyInjector();
-        container.RegisterTransient(() => new Foo());
-
-        var a = container.GetInstance<Foo>();
-        var b = container.GetInstance<Foo>();
+        // Arrange
+        var sut = new BuddyInjector();
         
+        // Act
+        sut.RegisterTransient(() => new Foo());
+        var a = sut.GetInstance<Foo>();
+        var b = sut.GetInstance<Foo>();
+        
+        // Assert
         Assert.NotEqual(a, b);
     }
 
     [Fact]
     public void Should_Create_An_Object_Based_On_Interface()
     {
-        var container = new BuddyInjector();
-        container.RegisterSingleton<IFoo>(() => new Foo());
-
-        var value = container.GetInstance<IFoo>();
+        // Arrange
+        var sut = new BuddyInjector();
         
+        // Act
+        sut.RegisterSingleton<IFoo>(() => new Foo());
+        var value = sut.GetInstance<IFoo>();
+        
+        // Assert
         Assert.IsAssignableFrom<IFoo>(value);
     }
     
     [Fact]
     public void Should_Return_NotRegisteredException_When_Get_An_Object_Not_Registered()
     {
-        var container = new BuddyInjector();
+        // Arrange
+        var sut = new BuddyInjector();
         
-        Assert.Throws<NotRegisteredException>(() => container.GetInstance<IBar>());
+        // Act
+        
+        // Assert
+        Assert.Throws<NotRegisteredException>(() => sut.GetInstance<IBar>());
     }
     
     [Fact]
-    public void Should_Register_All_Instances_From_Lambda()
+    public void Should_Register_All_Instances_From_Delegate_Function()
     {
-        var container = new BuddyInjector()
+        // Arrange
+        
+        // Act
+        var sut = new BuddyInjector()
             .RegisterAll(x =>
         {
             x.RegisterSingleton<IFoo>(() => new Foo());
             x.RegisterSingleton<IBar>(() => new Bar(x.GetInstance<IFoo>()));
         });
 
-        var instance = container.GetInstance<IBar>();
+        var instance = sut.GetInstance<IBar>();
 
+        // Assert
         Assert.IsAssignableFrom<IBar>(instance);
     }
     
     [Fact]
     public void Should_Register_All_Instances_No_Matter_The_Order()
     {
-        var container = new BuddyInjector();
-        container.RegisterTransient<IBar>(() => new Bar(container.GetInstance<IFoo>()));
-        container.RegisterTransient<IFoo>(() => new Foo());
-
-        var instance = container.GetInstance<IBar>();
-        var message = instance.Foo.SayHello();
+        // Arrange
+        var sut = new BuddyInjector();
         
+        // Act
+        sut.RegisterTransient<IBar>(() => new Bar(sut.GetInstance<IFoo>()));
+        sut.RegisterTransient<IFoo>(() => new Foo());
+
+        var message = sut.GetInstance<IBar>().Foo.SayHello();
+        
+        // Assert
         Assert.Equal("Hello Foo!", message);
     }
 
