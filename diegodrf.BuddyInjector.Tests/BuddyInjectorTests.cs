@@ -73,4 +73,38 @@ public class BuddyInjectorTests
         
         Assert.Equal("Hello Foo!", message);
     }
+
+    [Fact]
+    public void Given_More_Than_Once_Register_For_Same_Interface_Should_Use_Only_The_Last_Register()
+    {
+        // Arrange
+        var sut = new BuddyInjector();
+        sut.RegisterSingleton<IFoo>(() => new Foo());
+        sut.RegisterSingleton<IFoo>(() => new Foo2());
+        
+        // Act
+        var instance = sut.GetInstance<IFoo>();
+        
+        // Assert
+        // Assert
+        Assert.Equal("Hello Foo2!", instance.SayHello());
+        Assert.IsAssignableFrom<Foo2>(instance);
+
+    }
+    
+    [Fact]
+    public void Given_More_Than_Once_Register_For_Same_Interface_Should_Discard_The_Previous_Register()
+    {
+        // Arrange
+        var sut = new BuddyInjector();
+        sut.RegisterSingleton<IFoo>(() => new Foo());
+        sut.RegisterSingleton<IFoo>(() => new Foo2());
+        
+        // Act
+        var instance = sut.GetInstance<IFoo>();
+        
+        // Assert
+        Assert.NotEqual("Hello Foo!", instance.SayHello()); // "Hello Foo!" is [Foo()] result.
+        Assert.IsAssignableFrom<Foo2>(instance);
+    }
 }
