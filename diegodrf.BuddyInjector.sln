@@ -7,7 +7,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extras", "Extras", "{07C9F1A3-6435-46CD-B6DF-D1E2B68EFF91}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
-		LICENSE = LICENSE
+		LICENSE.txt = LICENSE.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "diegodrf.BuddyInjector.ExampleProject", "diegodrf.BuddyInjector.ExampleProject\diegodrf.BuddyInjector.ExampleProject.csproj", "{2657E785-3175-4138-81F1-FEBE16A45E32}"
