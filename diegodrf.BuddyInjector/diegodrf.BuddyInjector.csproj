@@ -4,7 +4,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Version>0.0.1</Version>
+        <Version>0.0.2-alpha</Version>
         <Title>BuddyInjector</Title>
         <Description>A very basic injector to help with unit test injections.</Description>
         <LangVersion>latest</LangVersion>
@@ -12,8 +12,25 @@
         <RepositoryUrl>https://github.com/diegodrf/diegodrf.BuddyInjector</RepositoryUrl>
         <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageReleaseNotes>- Include sourcelink</PackageReleaseNotes>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <!-- SourceLink -->
+        <!-- Optional: Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <!-- Optional: Embed source files that are not tracked by the source control manager in the PDB -->
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <!-- Optional: Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
+    <ItemGroup>
+        <!-- SourceLink -->
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+    </ItemGroup>
+    
     <ItemGroup>
         <None Include="..\LICENSE.txt" Pack="true" PackagePath=""/>
         <None Include="..\README.md" Pack="true" PackagePath=""/>
