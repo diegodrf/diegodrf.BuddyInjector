@@ -4,15 +4,15 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Version>0.0.2-alpha</Version>
+        <Version>0.0.3</Version>
         <Title>BuddyInjector</Title>
-        <Description>A very basic injector to help with unit test injections.</Description>
+        <Description>A basic injector to help with unit test injections.</Description>
         <LangVersion>latest</LangVersion>
         <PackageProjectUrl>https://github.com/diegodrf/diegodrf.BuddyInjector</PackageProjectUrl>
         <RepositoryUrl>https://github.com/diegodrf/diegodrf.BuddyInjector</RepositoryUrl>
         <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageReleaseNotes>- Include sourcelink</PackageReleaseNotes>
+        <PackageReleaseNotes>- Include auto constructor parameters mapper</PackageReleaseNotes>
     </PropertyGroup>
     
     <PropertyGroup>
