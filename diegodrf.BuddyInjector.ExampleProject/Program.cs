@@ -25,9 +25,11 @@ return;
 // InitialRegister is an Action that receives an BuddyInjector object and register the default instances for the tests.
 void InitialRegister(BuddyInjector x)
 {
+    // It's possible to explicitly instantiate an object. 
     x.RegisterSingleton<HttpClient>(() => new HttpClient());
-    x.RegisterTransient<IJsonPlaceHolderService>(
-        () => new JsonPlaceHolderService(x.GetInstance<HttpClient>()));
+    // It's possible to implicitly instantiate an object. Be sure all dependencies were registered before call
+    // GetInstance() for this object.
+    x.RegisterTransient<IJsonPlaceHolderService, JsonPlaceHolderService>();
 }
 
 HttpClient MockHttpClient()
