@@ -126,4 +126,78 @@ public class BuddyInjectorTests
         Assert.NotEqual("Hello Foo!", instance.SayHello()); // "Hello Foo!" is [Foo()] result.
         Assert.IsAssignableFrom<Foo2>(instance);
     }
+    
+    [Fact]
+    public void Should_Register_All_Instances_Using_Auto_Map_Constructor_Parameters()
+    {
+        // Arrange
+        var sut = new BuddyInjector();
+        
+        // Act
+        sut.RegisterTransient<IFoo, Foo>();
+        sut.RegisterTransient<IBar, Bar>();
+
+        var message = sut.GetInstance<IBar>().Foo.SayHello();
+        
+        // Assert
+        Assert.Equal("Hello Foo!", message);
+    }
+    
+    [Fact]
+    public void Should_Register_All_Instances_Using_Auto_Map_Constructor_Parameters_No_Matter_The_Order()
+    {
+        // Arrange
+        var sut = new BuddyInjector();
+        
+        // Act
+        sut.RegisterTransient<IBar, Bar>();
+        sut.RegisterTransient<IFoo, Foo>();
+        
+        var message = sut.GetInstance<IBar>().Foo.SayHello();
+        
+        // Assert
+        Assert.Equal("Hello Foo!", message);
+    }
+    
+    [Fact]
+    public void Should_Create_A_Singleton_Using_Auto_Map_Constructor_Parameters()
+    {
+        // Arrange
+        var sut = new BuddyInjector();
+        
+        // Act
+        sut.RegisterSingleton<IFoo, Foo>();
+        var a = sut.GetInstance<IFoo>();
+        var b = sut.GetInstance<IFoo>();
+        
+        // Assert
+        Assert.Equal(a, b);
+    }
+    
+    [Fact]
+    public void Should_Create_A_Transient_Using_Auto_Map_Constructor_Parameters()
+    {
+        // Arrange
+        var sut = new BuddyInjector();
+        
+        // Act
+        sut.RegisterTransient<IFoo, Foo>();
+        var a = sut.GetInstance<IFoo>();
+        var b = sut.GetInstance<IFoo>();
+        
+        // Assert
+        Assert.NotEqual(a, b);
+    }
+
+    [Fact]
+    public void Given_A_Class_With_Multiple_Constructors_Should_Throw_An_Exception()
+    {
+        // Arrange
+        var sut = new BuddyInjector();
+        
+        // Act
+        
+        // Assert
+        Assert.Throws<MultipleConstructorsException>(() => sut.RegisterTransient<Car, Car>());
+    }
 }

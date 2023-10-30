@@ -8,7 +8,7 @@ public class InstanceManagerTests
         // Arrange
         
         // Act
-        var sut = new InstanceManager<Foo>(() => new Foo(), true);
+        var sut = new InstanceManager(() => new Foo(), true);
         var a = sut.GetInstance();
         var b = sut.GetInstance();
         
@@ -22,7 +22,7 @@ public class InstanceManagerTests
         // Arrange
         
         // Act
-        var sut = new InstanceManager<Foo>(() => new Foo(), false);
+        var sut = new InstanceManager(() => new Foo(), false);
         var a = sut.GetInstance();
         var b = sut.GetInstance();
         
