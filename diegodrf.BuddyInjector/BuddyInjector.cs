@@ -32,7 +32,14 @@ public class BuddyInjector
 
             var parameters = constructor
                 .GetParameters()
-                .Select(x => _instanceMap[x.ParameterType].GetInstance())
+                .Select(x =>
+                {
+                    if (_instanceMap.TryGetValue(x.ParameterType, out var value))
+                    {
+                        return value.GetInstance();
+                    }
+                    throw new NotRegisteredException($"[{x.ParameterType.Name}] is not registered.");
+                })
                 .ToArray();
             
             return (TType)constructor.Invoke(parameters.ToArray());
