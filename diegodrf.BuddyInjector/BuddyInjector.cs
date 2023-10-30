@@ -20,7 +20,7 @@ public class BuddyInjector
         if (constructors.Length > 1)
         {
             var message = new StringBuilder()
-                .Append("It's not possible to determine the correct class constructor. ")
+                .Append($"It's not possible to determine the correct constructor for {typeof(TImp).Name}. ")
                 .Append("You should explicitly instantiate it manually.")
                 .ToString();
             throw new MultipleConstructorsException(message);
