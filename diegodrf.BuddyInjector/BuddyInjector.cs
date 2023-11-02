@@ -38,7 +38,11 @@ public class BuddyInjector
                     {
                         return value.GetInstance();
                     }
-                    throw new NotRegisteredException($"[{x.ParameterType.Name}] is not registered.");
+
+                    var message =
+                        $"It's not possible to initiate {typeof(TImp).Name} "
+                        + $"because the dependency {x.ParameterType.Name} is not registered.";
+                    throw new NotRegisteredException(message);
                 })
                 .ToArray();
             
