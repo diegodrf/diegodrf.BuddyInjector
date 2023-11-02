@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using diegodrf.BuddyInjector.Exceptions;
+using diegodrf.BuddyInjector.ExtensionMethods;
 
 namespace diegodrf.BuddyInjector;
 
@@ -41,7 +42,7 @@ public class BuddyInjector
 
                     var message =
                         $"It's not possible to initiate {typeof(TImp).Name} "
-                        + $"because the dependency {x.ParameterType.Name} is not registered.";
+                        + $"because the dependency {x.ParameterType.GetFormattedTypeName()} is not registered.";
                     throw new NotRegisteredException(message);
                 })
                 .ToArray();
