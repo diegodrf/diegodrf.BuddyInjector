@@ -200,4 +200,17 @@ public class BuddyInjectorTests
         // Assert
         Assert.Throws<MultipleConstructorsException>(() => sut.RegisterTransient<Car, Car>());
     }
+
+    [Fact]
+    public void Given_An_Instance_Should_Throw_An_Exception_When_A_Dependency_Is_Missing()
+    {
+        // Arrange
+        var sut = new BuddyInjector();
+        sut.RegisterTransient<IBar, Bar>();
+        
+        // Act
+        
+        // Assert
+        Assert.Throws<NotRegisteredException>(() => sut.GetInstance<IBar>());
+    }
 }

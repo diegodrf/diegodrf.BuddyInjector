@@ -12,7 +12,8 @@
         <RepositoryUrl>https://github.com/diegodrf/diegodrf.BuddyInjector</RepositoryUrl>
         <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageReleaseNotes>- Include auto constructor parameters mapper</PackageReleaseNotes>
+        <PackageReleaseNotes>- add more details to exception message</PackageReleaseNotes>
+        <PackageTags>buddyinjector dependency-injection DI Inversion-of-Control IOC unittesting unittest mocks</PackageTags>
     </PropertyGroup>
     
     <PropertyGroup>
