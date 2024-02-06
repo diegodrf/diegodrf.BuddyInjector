@@ -228,4 +228,20 @@ public class BuddyInjectorTests
         // Assert
         Assert.Throws<NotRegisteredException>(sut.GetInstance<DisposableClass>);
     }
+    
+    [Fact]
+    public void Should_Dispose_Objects_When_Run_In_Using_Scope()
+    {
+        // Arrange
+        
+        // Act
+        using (var sut = new BuddyInjector()) 
+        {
+            sut.RegisterSingleton<DisposableClass, DisposableClass>();
+            sut.GetInstance<DisposableClass>();
+        }
+
+        // Assert
+        Assert.True(DisposableClass.Disposed);
+    }
 }
