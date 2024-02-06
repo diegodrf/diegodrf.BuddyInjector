@@ -213,4 +213,19 @@ public class BuddyInjectorTests
         // Assert
         Assert.Throws<NotRegisteredException>(() => sut.GetInstance<IBar>());
     }
+    
+    [Fact]
+    public void Given_A_Disposable_Object_To_Container_As_Singleton_Should_Disposed_Objects_When_Scope_Ends()
+    {
+        // Arrange
+        var sut = new BuddyInjector();
+        sut.RegisterSingleton<DisposableClass, DisposableClass>();
+        sut.GetInstance<DisposableClass>();
+        
+        // Act
+        sut.Dispose();
+        
+        // Assert
+        Assert.Throws<NotRegisteredException>(sut.GetInstance<DisposableClass>);
+    }
 }
