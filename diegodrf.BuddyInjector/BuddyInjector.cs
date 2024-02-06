@@ -4,8 +4,9 @@ using diegodrf.BuddyInjector.ExtensionMethods;
 
 namespace diegodrf.BuddyInjector;
 
-public class BuddyInjector
+public class BuddyInjector : IDisposable
 {
+    private bool _disposed;
     private readonly Dictionary<Type, InstanceManager> _instanceMap = new();
 
     private void Register<T>(Func<T> instanceBuilder, bool isSingleton)
@@ -117,5 +118,34 @@ public class BuddyInjector
     {
         action.Invoke(this);
         return this;
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_disposed)
+        {
+            return;
+        }
+        
+        if (disposing)
+        {
+            foreach (var instance in _instanceMap)
+            {
+                if (instance.Value.IsDisposable)
+                {
+                    ((IDisposable)instance.Value.GetInstance()).Dispose();
+                }
+            }
+        }
+        
+        _instanceMap.Clear();
+        
+        _disposed = true;
     }
 }
