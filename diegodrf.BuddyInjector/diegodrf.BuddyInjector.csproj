@@ -4,15 +4,15 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Version>1.1.0-beta</Version>
+        <Version>1.1.1</Version>
         <Title>BuddyInjector</Title>
-        <Description>A basic injector to help with unit test injections.</Description>
+        <Description>A basic dependecy injector to help with unit test injections.</Description>
         <LangVersion>latest</LangVersion>
         <PackageProjectUrl>https://github.com/diegodrf/diegodrf.BuddyInjector</PackageProjectUrl>
         <RepositoryUrl>https://github.com/diegodrf/diegodrf.BuddyInjector</RepositoryUrl>
         <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageReleaseNotes>- implementing IDisposable</PackageReleaseNotes>
+        <PackageReleaseNotes>- IDisposable</PackageReleaseNotes>
         <PackageTags>buddyinjector dependency-injection DI Inversion-of-Control IOC unittesting unittest mocks</PackageTags>
     </PropertyGroup>
     
