@@ -1,15 +1,10 @@
-# diegodrf.BuddyInjector
+# BuddyInjector
 ![CI](https://github.com/diegodrf/diegodrf.BuddyInjector/actions/workflows/dotnet.yml/badge.svg?branch=main)
 
 Buddy Injector was created to help your manual job when unit testing your class that depends on many injections.
 
 Buddy Injector intends to be as simple as possible. It does not intend to be a robust dependency injector, to be used in
 large scale, or as your main dependency container.
-
-[Download](https://www.nuget.org/packages/diegodrf.BuddyInjector/)
-
-### Examples
-See [a simple project example](https://github.com/diegodrf/diegodrf.BuddyInjector/tree/main/diegodrf.BuddyInjector.ExampleProject).
 
 ## Quick Start
 
@@ -64,7 +59,30 @@ interface IFoo { }
 class Foo : IFoo { }
 ```
 #### Register All
-TODO
+When we create tests it's normal to instantiate the same class a lot of times to cover all the tests. So to help with this boring task BuddyInjector has the `RegisterAll`.
+
+The `RegisterAll` method expects an `Action` that receives an instance of `BuddyInjector`. So you can create a base implementation to instantiate all your classes, like the real implementations for example, and substitute them per test with the specific mocks.
+```cs
+using diegodrf.BuddyInjector;
+
+Action<BuddyInjector> instantiateAll = buddyInjector =>
+{
+    buddyInjector.RegisterSingleton<IFoo, Foo>();
+    buddyInjector.RegisterSingleton<IBar, Bar>();
+};
+
+using (BuddyInjector buddyInjector = new BuddyInjector())
+{
+    buddyInjector.RegisterAll(instantiateAll);
+
+    buddyInjector.GetInstance<IBar>();
+}
+
+interface IFoo { }
+interface IBar { }
+class Foo : IFoo { }
+class Bar(IFoo foo) : IBar { }
+```
 #### Override instances
 The behavior of registers is to override registered instances. It allows you to register the real implementations and substitute for the mocks only what you need for the test.
 ```cs
