@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Version>1.1.1</Version>
+        <Version>1.1.2</Version>
         <Title>BuddyInjector</Title>
         <Description>A basic dependecy injector to help with unit test injections.</Description>
         <LangVersion>latest</LangVersion>
@@ -12,7 +12,7 @@
         <RepositoryUrl>https://github.com/diegodrf/diegodrf.BuddyInjector</RepositoryUrl>
         <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageReleaseNotes>- IDisposable</PackageReleaseNotes>
+        <PackageReleaseNotes>- New documentation</PackageReleaseNotes>
         <PackageTags>buddyinjector dependency-injection DI Inversion-of-Control IOC unittesting unittest mocks</PackageTags>
     </PropertyGroup>
     
@@ -27,6 +27,7 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <PackageIcon>Icon.png</PackageIcon>
         <RepositoryType>git</RepositoryType>
+        <Authors>Diego Faria</Authors>
     </PropertyGroup>
 
     <ItemGroup>
