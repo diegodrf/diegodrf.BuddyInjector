@@ -14,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extras", "Extras", "{07C9F1
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "diegodrf.BuddyInjector.ExampleProject", "diegodrf.BuddyInjector.ExampleProject\diegodrf.BuddyInjector.ExampleProject.csproj", "{2657E785-3175-4138-81F1-FEBE16A45E32}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,10 +28,6 @@ Global
 		{D9796BF0-0D11-4371-972C-D0D601739B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9796BF0-0D11-4371-972C-D0D601739B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9796BF0-0D11-4371-972C-D0D601739B36}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2657E785-3175-4138-81F1-FEBE16A45E32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2657E785-3175-4138-81F1-FEBE16A45E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2657E785-3175-4138-81F1-FEBE16A45E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2657E785-3175-4138-81F1-FEBE16A45E32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
