@@ -15,7 +15,7 @@ dotnet add package diegodrf.BuddyInjector
 ### BuddyInjector class
 The `BuddyInjector` class is the main point to interact with the dependencies. Here you will be able to register and get the dependencies.
 #### Dispose resources
-It's possible and recommended to call `Dispose` after using the container. Disposing `BuddyInjector` will call Dispose for all dependencies that implementing it.
+It's possible and recommended to call `Dispose` after using the container. Disposing `BuddyInjector` will call Dispose for all dependencies that implemented it.
 ```cs
 BuddyInjector buddyInjector = new BuddyInjector();
 // ...
@@ -84,7 +84,7 @@ class Foo : IFoo { }
 class Bar(IFoo foo) : IBar { }
 ```
 #### Override instances
-The behavior of registers is to override registered instances. It allows you to register the real implementations and substitute for the mocks only what you need for the test.
+The behavior of **Registers** is to override registered instances. It allows you to register the real implementations and for each test that you need a mock you can replace it with it.
 ```cs
 using (BuddyInjector buddyInjector = new BuddyInjector())
 {
@@ -108,7 +108,7 @@ class MockImplementation : IFoo { }
 #### MultipleConstructorsException
 To use the implicit registration BuddyInjector expects that the class has only one constructor. If there is more than one, it will throw `MultipleConstructorsException`.
 
-When the class has more than one constructor, you should register using the explicit constructor to teach BuddyInjector how to instantiate the class.
+When the class has more than one constructor, you should register using the explicit constructor.
 ```cs
 using (BuddyInjector buddyInjector = new BuddyInjector())
 {
