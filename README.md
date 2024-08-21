@@ -118,8 +118,10 @@ using (BuddyInjector buddyInjector = new BuddyInjector())
 interface IFoo { }
 class Foo : IFoo 
 {
+    // First constructor 
     public Foo() { }
 
+    // Second constructor
     public Foo(bool someValue) { }
 }
 ```
