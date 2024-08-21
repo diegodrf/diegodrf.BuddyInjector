@@ -9,7 +9,7 @@ large scale, or as your main dependency container.
 ## Quick Start
 
 ### Installation 
-```
+```console
 dotnet add package diegodrf.BuddyInjector
 ```
 ### BuddyInjector class
@@ -118,15 +118,9 @@ using (BuddyInjector buddyInjector = new BuddyInjector())
 interface IFoo { }
 class Foo : IFoo 
 {
-    public Foo()
-    {
-        
-    }
+    public Foo() { }
 
-    public Foo(bool someValue)
-    {
-        
-    }
+    public Foo(bool someValue) { }
 }
 ```
 
