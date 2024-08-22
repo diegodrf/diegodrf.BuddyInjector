@@ -8,10 +8,24 @@ large scale, or as your main dependency container.
 
 ## Quick Start
 
-### Installation 
+### Index
+- [Installation](#installation)
+- [BuddyInjector class](#buddyinjector-class)
+  - [Dispose resources](#dispose-resources)
+- [Registers](#registers)
+  - [Register Singleton](#register-singleton)
+  - [Register Transient](#register-transient)
+  - [Register All](#register-all)
+  - [Override instances](#override-instances)
+  - [MultipleConstructorsException](#multipleconstructorsexception)
+- [Get instances](#get-instances)
+
+### Installation
 ```console
 dotnet add package diegodrf.BuddyInjector
 ```
+[Back to index &uarr;](#index)
+
 ### BuddyInjector class
 The `BuddyInjector` class is the main point to interact with the dependencies. Here you will be able to register and get the dependencies.
 #### Dispose resources
@@ -28,7 +42,9 @@ using (BuddyInjector buddyInjector = new BuddyInjector())
     // ...
 }
 ```
-### Register
+[Back to index &uarr;](#index)
+
+### Registers
 BuddyInjector allows you to register two life cycles, **Transient** and **Singleton**. Boot accepts two ways, implicit and explicit.
 #### Register Singleton
 - `RegisterSingleton<TType, TImplementation>()`
@@ -125,6 +141,7 @@ class Foo : IFoo
     public Foo(bool someValue) { }
 }
 ```
+[Back to index &uarr;](#index)
 
 ### Get instances
 To retrieve the instances you use RegisterTransient `GetInstance<T>()`.
@@ -139,5 +156,7 @@ interface IFoo { }
 class Foo : IFoo { }
 ```
 If you try to retrieve an object not registered, you will receive the exception `NotRegisteredException`.
+
+[Back to index &uarr;](#index)
 
 
