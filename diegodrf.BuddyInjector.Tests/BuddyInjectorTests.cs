@@ -244,4 +244,43 @@ public class BuddyInjectorTests
         // Assert
         Assert.True(DisposableClass.Disposed);
     }
+
+    [Fact]
+    public void Should_Throw_An_Exception_When_Register_A_Singleton_Using_An_Interface_Instead_A_Concrete_Class()
+    {
+        // Arrange
+        var sut = new BuddyInjector();
+
+        // Act
+        void register() => sut.RegisterSingleton<IBar, IBar>();
+
+        // Assert
+        Assert.Throws<ArgumentException>(register);
+    }
+
+    [Fact]
+    public void Should_Throw_An_Exception_When_Register_A_Transient_Using_An_Interface_Instead_A_Concrete_Class()
+    {
+        // Arrange
+        var sut = new BuddyInjector();
+
+        // Act
+        void register() => sut.RegisterTransient<IBar, IBar>();
+
+        // Assert
+        Assert.Throws<ArgumentException>(register);
+    }
+
+    [Fact]
+    public void Should_Throw_An_Exception_With_Clear_Message_When_Register_An_Interface_Instead_A_Concrete_Class()
+    {
+        // Arrange
+        var sut = new BuddyInjector();
+
+        // Act
+        void register() => sut.RegisterTransient<IBar, IBar>();
+
+        // Assert
+        Assert.Equal("IBar is not a concrete class.", Assert.ThrowsAny<Exception>(register).Message);
+    }
 }
