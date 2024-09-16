@@ -141,6 +141,21 @@ class Foo : IFoo
     public Foo(bool someValue) { }
 }
 ```
+
+#### ArgumentException
+If you try to register a not concrete class, like *interface* or *abstract class*, **BuddyInjector** will fail fast trowing `ArgumentException`.
+
+Example:
+```
+using (BuddyInjector buddyInjector = new BuddyInjector())
+{
+    buddyInjector.RegisterSingleton<IFoo, IFoo>(); // It throws [ArgumentException].
+}
+
+interface IFoo { }
+class Foo : IFoo { }
+```
+
 [Back to index &uarr;](#index)
 
 ### Get instances
