@@ -18,6 +18,7 @@ large scale, or as your main dependency container.
   - [Register All](#register-all)
   - [Override instances](#override-instances)
   - [MultipleConstructorsException](#multipleconstructorsexception)
+  - [ArgumentException](#ArgumentException)
 - [Get instances](#get-instances)
 
 ### Installation
@@ -146,7 +147,7 @@ class Foo : IFoo
 If you try to register a not concrete class, like *interface* or *abstract class*, **BuddyInjector** will fail fast trowing `ArgumentException`.
 
 Example:
-```
+```cs
 using (BuddyInjector buddyInjector = new BuddyInjector())
 {
     buddyInjector.RegisterSingleton<IFoo, IFoo>(); // It throws [ArgumentException].
