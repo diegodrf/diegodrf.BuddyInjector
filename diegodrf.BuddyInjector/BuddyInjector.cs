@@ -17,6 +17,11 @@ public class BuddyInjector : IDisposable
 
     private void Register<TType, TImp>(bool isSingleton)
     {
+        if(typeof(TImp).IsInterface || typeof(TImp).IsAbstract)
+        {
+            throw new ArgumentException($"{typeof(TImp).Name} is not a concrete class.");
+        }
+
         var constructors = typeof(TImp).GetConstructors();
 
         if (constructors.Length > 1)
